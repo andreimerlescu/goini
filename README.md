@@ -79,7 +79,7 @@ echo $? # Output: 0
 echo $? # Output: 1
 ```
 
-### Relying on exit code, are "section1" and "section2" present?
+### Task 5 - Relying on exit code, are "section1" and "section2" present?
 
 ```bash
 ./goini --ini sample.ini --are-sections-present default,extra
@@ -184,4 +184,38 @@ echo $? # Output: 0 (and 'user' in [default] will be updated to 'NewUserValue')
 # Try modifying non-existent key (should fail)
 ./goini --ini sample.ini --section default --key non_existent_key --value some_value --modify-key
 echo $? # Output: 1
+```
+
+## Testing
+
+There is a [test.sh](/test.sh) script that produces the following output that tests each of these examples.
+
+```log
+./test.sh
+Building goini binary...
+Clean successful: ./bin/goini-darwin-arm64
+Build successful: ./bin/goini-darwin-arm64
+
+TEST_01: Relying on exit code, does 'section' have 'key'?...PASSED
+TEST_02: Relying on exit code, does 'section' have 'key'?...PASSED
+TEST_03: Relying on exit code, does 'section' 'key' have value 'value'?...PASSED
+TEST_04: Relying on exit code, does 'section' 'key' have value 'value'?...PASSED
+TEST_05: Relying on exit code, are 'section1' and 'section2' present?...PASSED
+TEST_06: Relying on exit code, are 'section1' and 'section2' present?...PASSED
+TEST_07: Using STDOUT, return list of 'sections' in ini file...PASSED
+TEST_08: Using STDOUT, return list of 'sections' in ini file...PASSED
+TEST_09: Using STDOUT, return list of 'sections' in ini file...PASSED
+TEST_10: Using STDOUT, return list of 'sections' in ini file...PASSED
+TEST_11: Using STDOUT, return a list of keys in 'section' (by name)...PASSED
+TEST_12: Using STDOUT, return a list of keys in 'section' (by name)...PASSED
+TEST_13: Using STDOUT, return a list of key/values in 'section' (by name)...PASSED
+TEST_14: Using STDOUT, return a list of key/values in 'section' (by name)...PASSED
+TEST_15: Using exit code for success status, add new section to ini file...PASSED
+TEST_16: Try adding again (expecting exit 1)...PASSED
+TEST_17: Using exit code for success status, in section 'section', add 'key' with value 'value'...PASSED
+TEST_18: Try adding existing key (expecting exit 1)...PASSED
+TEST_19: Using exit code for success status, in section 'section', modify 'key' with new value 'value'...PASSED
+TEST_20: Try modifying non-existent key (expecting exit 1)...PASSED
+
+All 20 tests passed. PASS
 ```
