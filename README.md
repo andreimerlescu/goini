@@ -1,4 +1,6 @@
 # GO INI
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fandreimerlescu%2Fgoini.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fandreimerlescu%2Fgoini?ref=badge_shield)
+
 
 This utility is called `goini` and its designed to help you interact with `.ini` files. 
 
@@ -219,3 +221,6 @@ TEST_20: Try modifying non-existent key (expecting exit 1)...PASSED
 
 All 20 tests passed. PASS
 ```
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fandreimerlescu%2Fgoini.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fandreimerlescu%2Fgoini?ref=badge_large)
